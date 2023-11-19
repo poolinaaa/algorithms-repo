@@ -26,8 +26,10 @@ class Queue:
     def dequeue(self):
         if self.head != None:
             print(self.head.value)
+            popped = self.head
             self.head = self.head.next
             self.length -= 1
+            return popped
         else:
             print('Queue is empty')
     
