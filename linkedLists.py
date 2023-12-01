@@ -6,18 +6,22 @@ class Element():
 
 class List():
     
-    def __init__(self):
-        self.head = None
-        self.tail = None
+    def __init__(self, head : Element):
+        self.head = head
         self.length = 0
 
     def appendingElement(self,element:Element):
         if self.head == None:
             self.head = element
-            self.tail = element
+            
         else:
-            self.tail.next = element
-            self.tail = element
+            curr = self.head
+            while True:
+                if curr.next == None:
+                    curr.next = element
+                    break
+                else:
+                    curr = curr.next
         self.length += 1 
 
     def __str__(self):
@@ -31,27 +35,10 @@ class List():
 
 
 
-el = Element(20)
 
-
-li = List()
-li.appendingElement(el)
-el = Element(21)
-li.appendingElement(el)
-
-el = Element(22)
-li.appendingElement(el)
-
-el = Element(23)
-li.appendingElement(el)
-
-el = Element(24)
-li.appendingElement(el)
-
-print(li.tail.next)
-print(li.length)
+    
+    
+li = List(Element(2))
+li.appendingElement(Element(5))
 print(li)
-    
-    
-
     
