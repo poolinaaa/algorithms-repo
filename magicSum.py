@@ -1,4 +1,5 @@
-from itertools import count
+from datetime import timedelta
+from timeit import default_timer as timer
 
 
 def magicSum(arr: list):
@@ -18,7 +19,8 @@ def magicSum(arr: list):
 arrMagic = magicSum([3, 5, 3, 4, 8, 0, 10])
 print(arrMagic)
 
-# sorting elements
+
+# sorting elements (occurrence, value)
 
 
 def sortArr(arr):
@@ -43,4 +45,18 @@ def sortArr(arr):
     print(sorted2)
 
 
+def sorting_test(items):
+    sorted_list = sorted(items, key=lambda x: (items.count(x), x))
+    print(sorted_list)
+
+
+start = timer()
 sortArr([3, 5, 3, 4, 8, 0, 10])
+end = timer()
+print(timedelta(seconds=end-start))
+
+
+start = timer()
+sorting_test([3, 5, 3, 4, 8, 0, 10])
+end = timer()
+print(timedelta(seconds=end-start))
