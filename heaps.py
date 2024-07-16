@@ -5,7 +5,6 @@ def heapify(arr, idx):
     R = 2*idx + 2
     
     if idx >= len(arr)//2:
-        print(arr)
         return arr
         
     if arr[curr] < arr[L]:
@@ -19,6 +18,13 @@ def heapify(arr, idx):
         heapify(arr, curr)        
     return arr
 
+def build_heap(arr):
+    i = 0
+    while (len(arr)//2)-i >= 0:
+        arr = heapify(arr, (len(arr)//2)-i)
+        i+=1
+    return arr
+
 a = [2,5,4,3,1,8,9,3,1,9,8]
-heap = heapify(a, 4)
+heap = build_heap(a)
 print(heap)
