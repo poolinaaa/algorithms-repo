@@ -9,8 +9,9 @@ def heapify(arr, idx):
 
     if arr[curr] < arr[L]:
         curr = L
-    if arr[curr] < arr[R]:
-        curr = R
+    if R<len(arr):
+        if arr[curr] < arr[R]:
+            curr = R
     if curr != idx:
         parent_to_be = arr[curr]
         arr[curr] = arr[idx]
@@ -30,7 +31,19 @@ def del_node(arr, idx):
     arr[idx]=arr.pop()
     return heapify(arr,idx)
 
-
+def insert_node(arr, value):
+    arr.append(value)
+    i = len(arr)-1
+    while i > 0:
+        parent = (i-1)//2
+        if arr[parent]<arr[i]:
+            temp = arr[parent]
+            arr[parent]= arr[i]
+            arr[i]=temp
+            i=parent
+        else:
+            return arr
+    return arr
 
 a = [2, 5, 4, 3, 1, 8, 9, 3, 1, 9, 8]
 heap = build_heap(a)
@@ -39,3 +52,5 @@ delated  = del_node(heap, 7)
 print(delated)
 delated  = del_node(heap, 4)
 print(delated)
+af = insert_node(heap, 16)
+print(af)
